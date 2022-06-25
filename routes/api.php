@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,14 @@ Route::get('/test', function(){
         "data" => "backend connected"
     ];
     return response($response, 200);
+});
+
+Route::prefix('auth')->group(function () {
+    Route::post('/register', [AuthController::class, 'registerApi'])->name('customer.registration');
+    Route::post('/login', [AuthController::class, 'loginApi'])->name('customer.login');
+
+    Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+        Route::get('/logout', [AuthController::class, 'logoutApi'])->name('customer.logout');
+
+    });
 });

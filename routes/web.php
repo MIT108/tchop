@@ -9,6 +9,9 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\MenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +47,38 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('user-management', function () {
 		return view('laravel-examples/user-management');
 	})->name('user-management');
+
+
+    //custom routes
+
+	Route::get('client-management', [CustomerController::class, 'index'] )->name('client-management');
+    Route::post('customer-create', [CustomerController::class, 'create'])->name('customer-create');
+    Route::get('customer/list', [CustomerController::class, 'getCustomers'])->name('customers.list');
+    Route::get('customer/suspend/{id}', [CustomerController::class, 'suspendCustomer'])->name('suspend.customer');
+    Route::get('customer/activate/{id}', [CustomerController::class, 'activateCustomer'])->name('activate.customer');
+    Route::get('customer/delete/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');
+    Route::get('customer/{id}', [CustomerController::class, 'viewCustomer'])->name('view.customer');
+
+
+
+    //menu Routes
+
+    Route::get('menu-management', [MenuController::class, 'index'])->name('menu-management');
+    Route::post('create/menu', [MenuController::class, 'createMenu'])->name('create.menu');
+    Route::post('update/menu', [MenuController::class, 'updateMenu'])->name('update.menu');
+    Route::get('menu/{id}', [MenuController::class, 'viewMenu'])->name('view.menu');
+    Route::post('menu/ingredients/{id}', [MenuController::class, 'menuIngredient'])->name('menu.ingredient');
+
+
+    //ingredient routes
+
+    Route::post('create/ingredient', [IngredientController::class, 'createIngredient'])->name('create.ingredient');
+    Route::post('update/ingredient', [IngredientController::class, 'updateIngredient'])->name('update.ingredient');
+    Route::get('ingredient/delete/{id}', [IngredientController::class, 'deleteIngredient'])->name('delete.ingredient');
+    Route::get('ingredient/{id}', [IngredientController::class, 'viewIngredient'])->name('view.ingredient');
+
+
+
 
 	Route::get('tables', function () {
 		return view('tables');
