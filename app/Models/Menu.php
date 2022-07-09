@@ -14,4 +14,8 @@ class Menu extends Model
     public function getImageAttribute($value){
         return env('APP_URL').Storage::url("menus/".$value);
     }
+
+    public function menu_content(){
+        return $this->hasMany('App\Model\MenuContent');
+    }
 }

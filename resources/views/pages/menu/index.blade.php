@@ -124,7 +124,7 @@
             <div id="menuTab" class="tab-pane fade active show">
 
                 <div class="row my-4">
-                    <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+                    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
                         <div class="card">
                             <div class="card-header pb-0">
                                 <div class="row">
@@ -181,11 +181,11 @@
                                                     <td class="align-middle text-center text-sm">
 
                                                         @php
-                                                            if (Str::length($menu->description) > 20) {
-                                                                $newDescription = Str::substr($menu->description, 0, 12) . '... ';
+                                                            if (Str::length($menu->description) > 30) {
+                                                                $newDescription = Str::substr($menu->description, 0, 25) . '... ';
                                                             }
                                                         @endphp
-                                                        @if (Str::length($menu->description) > 20)
+                                                        @if (Str::length($menu->description) > 30)
                                                             <span class="text-xs font-weight-bold">
                                                                 {{ $newDescription }}</span><a
                                                                 href="/menu/{{ $menu->id }}">see more</a>
@@ -214,35 +214,6 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card h-100">
-                            <div class="card-header pb-0">
-                                <h6>Departments</h6>
-                            </div>
-                            <div class="card-body p-3">
-                                <div class="timeline timeline-one-side">
-                                    <div class="timeline-block mb-3">
-                                        <span class="timeline-step">
-                                            <i class="ni ni-bell-55 text-success text-gradient"></i>
-                                        </span>
-                                        <div class="timeline-content">
-                                            <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
-                                            <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-block mb-3">
-                                        <span class="timeline-step">
-                                            <i class="ni ni-html5 text-danger text-gradient"></i>
-                                        </span>
-                                        <div class="timeline-content">
-                                            <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412</h6>
-                                            <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -327,8 +298,6 @@
                                                             data-bs-original-title="Delete indgredient">
                                                             <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                         </a>
-                                                        <span>
-                                                        </span>
                                                     </td>
                                                 </tr>
                                             @endforeach

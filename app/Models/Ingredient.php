@@ -15,4 +15,10 @@ class Ingredient extends Model
         return env('APP_URL').Storage::url("ingredients/".$value);
     }
 
+    public function menu_content(){
+        return $this->hasMany('App\Model\MenuContent');
+    }
+    public function pack_content(){
+        return $this->hasMany('App\Model\PackContent');
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,11 @@ Route::prefix('auth')->group(function () {
     Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/logout', [AuthController::class, 'logoutApi'])->name('customer.logout');
 
+    });
+});
+
+Route::prefix('order')->group(function(){
+    Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+        Route::post('/makeOrder', [OrderController::class, 'makeOrderApi'])->name('make.order');
     });
 });

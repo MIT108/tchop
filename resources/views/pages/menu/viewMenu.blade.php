@@ -90,26 +90,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($ingredients as $ingredient)
+                                @foreach ($notIngredients as $notIngredient)
                                     <tr>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold"> {{ $ingredient->id }} </span>
+                                            <span class="text-xs font-weight-bold"> {{ $notIngredient->id }} </span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <center>
                                                 <div class="form-check text-center">
                                                     <input class="form-check-input" type="checkbox" value="1"
-                                                        name="{{ $ingredient->id }}" id="fcustomCheck1">
+                                                        name="{{ $notIngredient->id }}" id="fcustomCheck1">
                                                 </div>
                                             </center>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="text-xs font-weight-bold">
-                                                {{ $menu->name }}
+                                                {{ $notIngredient->name }}
                                             </span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold"> {{ $menu->created_at }}
+                                            <span class="text-xs font-weight-bold"> {{ $notIngredient->created_at }}
                                             </span>
                                         </td>
                                     </tr>
@@ -141,11 +141,15 @@
                         </div>
                         <div class="card-body px-0 pt-4">
                             <h4>
-                                {{ $menu->name }}
+                                Name: {{ $menu->name }}
                             </h4>
                             <p>
-                                {{ $menu->description }}
+                                Description: {{ $menu->description }}
                             </p>
+                            <div class="font-sm">
+                                Created Date: {{ $menu->created_at }}
+
+                            </div>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#editIngredient"
                                 class="btn bg-gradient-primary mt-3">Edit</button>
                         </div>
@@ -166,17 +170,28 @@
                         </div>
                         <div class="card-body p-3">
                             <ul class="list-group">
-                                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                    <div class="avatar me-3">
-                                        <img src="../assets/img/kal-visuals-square.jpg" alt="kal"
-                                            class="border-radius-lg shadow">
-                                    </div>
-                                    <div class="d-flex align-items-start flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Sophie B.</h6>
-                                        <p class="mb-0 text-xs">Hi! I need more information..</p>
-                                    </div>
-                                    <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">View</a>
-                                </li>
+                                @foreach ($ingredients as $ingredient)
+                                    <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                        <div class="avatar me-3">
+                                            <img src="{{ $ingredient['ingredient']->image }}" alt="kal"
+                                                class="border-radius-lg shadow">
+                                        </div>
+                                        <div class="d-flex align-items-start flex-column justify-content-center">
+                                            <h6 class="mb-0 ">{{ $ingredient['ingredient']->name }}</h6>
+                                            <p class="mb-0 text-xs">{{ $ingredient['ingredient']->created_at }}</p>
+                                        </div>
+                                        <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">
+                                            <a href="/ingredient/{{ $ingredient['ingredient']->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                                data-bs-original-title="View indgredient">
+                                                <i class="fas fa-eye text-secondary"></i>
+                                            </a>
+                                            <a href="/menu/ingredient/delete/{{ $ingredient['menu']->id }}/{{ $ingredient['ingredient']->id }}" class="mx-3" data-bs-toggle="tooltip"
+                                                data-bs-original-title="Delete indgredient">
+                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                            </a>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

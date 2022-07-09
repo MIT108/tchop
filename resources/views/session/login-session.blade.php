@@ -26,10 +26,6 @@
                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                       @enderror
                     </div>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                      <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
                     </div>
@@ -40,11 +36,6 @@
                   <a href="/login/forgot-password" class="text-info text-gradient font-weight-bold">here</a>
                 </small>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/curved-images/curved6.jpg')"></div>
               </div>
             </div>
           </div>

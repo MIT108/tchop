@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
+use App\Models\MenuContent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -49,7 +50,10 @@ class IngredientController extends Controller
 
         $ingredient = Ingredient::find($id);
         if ($ingredient) {
-            return view('pages/menu/view')->with('ingredient', $ingredient);
+            $menus = MenuContent::where('ingredient_id', $id)->with(['menu', 'ingredient'])->get();
+            return view('pages/menu/view')
+            ->with('ingredient', $ingredient)
+            ->with('menus', $menus);
         } else {
            return redirect()->route('menu-management');
         }
@@ -60,7 +64,7 @@ class IngredientController extends Controller
         try {
             //code...
             Ingredient::where('id', $id)->delete();
-            return redirect()->back()->with('success', 'Ingredient activated successful');
+            return redirect()->back()->with('success', 'Ingredient deleted successful');
         } catch (\Throwable $th) {
             //throw $th;
             return redirect()->back()->with('error', $th->getMessage());

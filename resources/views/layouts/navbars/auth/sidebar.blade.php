@@ -113,6 +113,45 @@
                         Menu Management</span>
                 </a>
             </li>
+            <li class="nav-item pb-2">
+                <a class="nav-link {{ Request::is('pack-management') ? 'active' : '' }}"
+                    href="{{ url('pack-management') }}">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;"
+                            class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ Request::is('pack-management') ? 'text-white' : 'text-dark' }} "
+                            aria-hidden="true"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">
+                        Pack Management</span>
+                </a>
+            </li>
+            <li class="nav-item pb-2">
+                <a class="nav-link {{ Request::is('order-management') ? 'active' : '' }}"
+                    href="{{ url('order-management') }}">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;"
+                            class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ Request::is('order-management') ? 'text-white' : 'text-dark' }} "
+                            aria-hidden="true"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">
+                        Order Management</span>
+                </a>
+            </li>
+            <li class="nav-item pb-2">
+                <a class="nav-link {{ Request::is('food-management') ? 'active' : '' }}"
+                    href="{{ url('food-management') }}">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;"
+                            class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ Request::is('food-management') ? 'text-white' : 'text-dark' }} "
+                            aria-hidden="true"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">
+                        Food of the Day</span>
+                </a>
+            </li>
             <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Example pages</h6>
             </li>
