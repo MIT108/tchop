@@ -92,18 +92,20 @@
                         </div>
                         <div class="card-body p-3">
                             <ul class="list-group">
+                                @foreach ($days as $day)
                                 <li class="list-group-item border-0 d-flex align-items-center cursor-pointer px-0 mb-2">
                                     <div class="avatar me-3">
-                                        <img src="../assets/img/kal-visuals-square.jpg" alt="kal"
+                                        <img src="{{ $day->image }}" alt="kal"
                                             class="border-radius-lg shadow">
                                     </div>
                                     <div class="d-flex align-items-start flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Sophie B.</h6>
-                                        <p class="mb-0 text-xs">Hi! I need more information..</p>
+                                        <h6 class="mb-0 text-sm">{{ $day->name }}</h6>
+                                        <p class="mb-0 text-xs">{{ $day->description }}</p>
                                     </div>
                                     <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" title="View day" href="javascript:;">View</a>
                                     <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto text-danger" title="Delete day"  href="javascript:;">Delete</a>
                                 </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
